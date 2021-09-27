@@ -310,7 +310,7 @@ func (blockExec *BlockExecutor) Commit(
 	)
 	updateMempoolEndTime := time.Now().UnixNano()
 
-	updateMempoolTimeMs := float64((updateMempoolEndTime-updateMempoolStartTime) / 1000000) / 1000.0
+	updateMempoolTimeMs := float64((updateMempoolEndTime-updateMempoolStartTime)/1000000) / 1000.0
 	blockExec.metrics.BlockUpdateMempoolTime.Set(updateMempoolTimeMs)
 
 	blockExec.logger.Info(
