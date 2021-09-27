@@ -242,7 +242,7 @@ func (blockExec *BlockExecutor) ApplyBlock(
 	numTxs := len(block.Txs)
 	tps := 0
 	if blockGenerationTimeMs > 0 {
-		tps = int(float64(numTxs) / blockGenerationTimeMs * 1000)
+		tps = int(float64(numTxs) / blockGenerationTimeMs)
 	}
 	blockExec.logger.Info(
 		"block generated",
