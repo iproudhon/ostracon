@@ -88,8 +88,9 @@ func (app *localClient) SetOptionAsync(req types.RequestSetOption, cb ResponseCa
 }
 
 func (app *localClient) DeliverTxAsync(req types.RequestDeliverTx, cb ResponseCallback) *ReqRes {
-	app.mtx.Lock()
-	defer app.mtx.Unlock()
+	// NOTE: commented out for performance. delete all after commenting out all `app.mtx`
+	// app.mtx.Lock()
+	// defer app.mtx.Unlock()
 
 	reqRes := NewReqRes(types.ToRequestDeliverTx(req), cb)
 	res := app.Application.DeliverTx(req)
@@ -242,8 +243,9 @@ func (app *localClient) SetOptionSync(req types.RequestSetOption) (*types.Respon
 }
 
 func (app *localClient) DeliverTxSync(req types.RequestDeliverTx) (*types.ResponseDeliverTx, error) {
-	app.mtx.Lock()
-	defer app.mtx.Unlock()
+	// NOTE: commented out for performance. delete all after commenting out all `app.mtx`
+	// app.mtx.Lock()
+	// defer app.mtx.Unlock()
 
 	res := app.Application.DeliverTx(req)
 	return &res, nil
